@@ -1,36 +1,12 @@
-#!ipxe#!ipxe
+#!ipxe
 ###
-### netboot.xyz-custom menu example
+### netboot.xyz-custom menu
 ###
 
-:custom
-clear custom_choice
-menu This is a Test Menu
-item --gap This is the first sub menu
-item Lubuntu ISO ${space} Loading a kernel and initrd
-item Lubuntu Custom ISO ${space} Loading an ISO
-item --gap This is a second sub menu
-item option_three ${space} Loads another custom sub menu
-item option_four ${space} This is option four
-choose custom_choice || goto custom_exit
-echo ${cls}
-goto ${custom_choice}
+:start
+echo Hello world!
+sleep 10
 goto custom_exit
 
-:option_one
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://192.168.1.170:8080/lubuntu-22.04.3-desktop-amd64.iso
-boot || goto custom_exit
-
-:option_two
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://192.168.1.170:8080/lubuntu-22.04.3-2023.06.15-desktop-amd64.iso 
-boot || goto custom_exit
-
-:option_three
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom1.ipxe || goto custom
-
 :custom_exit
-chain utils.ipxe
-exit
+exit 0
