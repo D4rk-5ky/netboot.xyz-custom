@@ -18,8 +18,8 @@ goto ${custom_choice}
 goto custom_exit
 
 :option_one
-kernel http://path.to/vmlinuz
-initrd http://path.to/initrd
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://192.168.1.170:8080/lubuntu-22.04.3-desktop-amd64.iso
 imgargs vmlinuz put_kernel_img_args_here
 boot || goto custom_exit
 
